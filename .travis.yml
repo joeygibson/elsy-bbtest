@@ -1,0 +1,14 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+before_install:
+  - docker build -t joeygibson/elsy-bbtest:latest .
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push joeygibson/elsy-bbtest:latest
+
+script:
+  - /bin/true
